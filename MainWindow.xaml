@@ -23,6 +23,36 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="{Binding Date, StringFormat=dd.MM}" />
+                    <ItemsControl ItemsSource="{Binding Tasks}" Grid.Row="1">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter Property="Background"
+                                                            Value="LightGray" />
+                                                </Trigger>
+                                                <DataTrigger Binding="{Binding Path=IsSelected}" Value="true">
+                                                    <Setter Property="Background"
+                                                            Value="DimGray" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <TextBlock Text="{Binding Name}">
+                                        <TextBlock.InputBindings>
+                                            <MouseBinding MouseAction="LeftClick"
+                                                          Command="{Binding DataContext.TaskClickCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+                                                          CommandParameter="{Binding Mode=OneWay}" />
+                                        </TextBlock.InputBindings>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </Grid>
             </Border>
         </DataTemplate>
