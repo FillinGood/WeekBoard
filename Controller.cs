@@ -48,6 +48,7 @@ namespace WeekBoard {
             TaskSerializer.Save(tasks);
             Tasks.Set(tasks);
             RefreshTasks();
+            OnTaskClick(tasks[0]);
         }
     }
 }

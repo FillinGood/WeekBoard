@@ -105,5 +105,25 @@
             <ContentPresenter ContentTemplate="{StaticResource BoardDayTemplate}" Content="{Binding Days[12]}" />
             <ContentPresenter ContentTemplate="{StaticResource BoardDayTemplate}" Content="{Binding Days[13]}" />
         </UniformGrid>
+        <Grid Grid.Column="2" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBox Text="{Binding SelectedTask.Name}"
+                     Grid.Row="0" />
+            <DatePicker SelectedDate="{Binding SelectedTask.StartDate}"
+                        Grid.Row="1" />
+            
+        </Grid>
     </Grid>
 </Window>
