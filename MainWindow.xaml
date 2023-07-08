@@ -12,7 +12,8 @@
         <local:Controller />
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate x:Key="BoardDayTemplate"
+		<local:DateOnlyConverter x:Key="DateOnlyConverter" />
+		<DataTemplate x:Key="BoardDayTemplate"
                       DataType="local:BoardDay">
             <Border BorderThickness="1"
                     BorderBrush="Black">
@@ -121,7 +122,7 @@
 
             <TextBox Text="{Binding SelectedTask.Name}"
                      Grid.Row="0" />
-            <DatePicker SelectedDate="{Binding SelectedTask.StartDate}"
+			<DatePicker SelectedDate="{Binding SelectedTask.StartDate, Converter={StaticResource DateOnlyConverter}}"
                         Grid.Row="1" />
             
         </Grid>
